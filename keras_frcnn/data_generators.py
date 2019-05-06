@@ -2,8 +2,8 @@ import numpy as np
 import cv2
 import random
 import copy
-import data_augment
-import roi_helpers
+from . import data_augment
+from . import roi_helpers
 import threading
 import itertools
 
@@ -72,7 +72,7 @@ class SampleSelector:
 		# ignore classes that have zero samples
 		self.classes = [b for b in class_count.keys() if class_count[b] > 0]
 		self.class_cycle = itertools.cycle(self.classes)
-		self.curr_class = self.class_cycle.next()
+		self.curr_class = self.class_cycle.__next__()
 
 	def skip_sample_for_balanced_class(self, img_data):
 
@@ -84,7 +84,7 @@ class SampleSelector:
 
 			if cls_name == self.curr_class:
 				class_in_img = True
-				self.curr_class = self.class_cycle.next()
+				self.curr_class = self.class_cycle.__next__()
 				break
 
 		if class_in_img:
@@ -129,12 +129,12 @@ def calc_rpn(C, img_data, width, height, resized_width, resized_height):
 	
 	# rpn ground truth
 
-	for anchor_size_idx in xrange(len(anchor_sizes)):
-		for anchor_ratio_idx in xrange(n_anchratios):
+	for anchor_size_idx in range(len(anchor_sizes)):
+		for anchor_ratio_idx in range(n_anchratios):
 			anchor_x = anchor_sizes[anchor_size_idx] * anchor_ratios[anchor_ratio_idx][0]
 			anchor_y = anchor_sizes[anchor_size_idx] * anchor_ratios[anchor_ratio_idx][1]	
 			
-			for ix in xrange(output_width):					
+			for ix in range(output_width):
 				# x-coordinates of the current anchor box	
 				x1_anc = downscale * (ix + 0.5) - anchor_x / 2
 				x2_anc = downscale * (ix + 0.5) + anchor_x / 2	
@@ -143,7 +143,7 @@ def calc_rpn(C, img_data, width, height, resized_width, resized_height):
 				if x1_anc < 0 or x2_anc > resized_width:
 					continue
 					
-				for jy in xrange(output_height):
+				for jy in range(output_height):
 
 					# y-coordinates of the current anchor box
 					y1_anc = downscale * (jy + 0.5) - anchor_y / 2
@@ -160,7 +160,7 @@ def calc_rpn(C, img_data, width, height, resized_width, resized_height):
 					# note that this is different from the best IOU for a GT bbox
 					best_iou_for_loc = 0.0
 
-					for bbox_num in xrange(num_bboxes):
+					for bbox_num in range(num_bboxes):
 						
 						# get IOU of the current GT box and the current anchor box
 						curr_iou = iou([gta[bbox_num, 0], gta[bbox_num, 2], gta[bbox_num, 1], gta[bbox_num, 3]], [x1_anc, y1_anc, x2_anc, y2_anc])
@@ -215,7 +215,7 @@ def calc_rpn(C, img_data, width, height, resized_width, resized_height):
 
 	# we ensure that every bbox has at least one positive RPN region
 
-	for idx in xrange(num_anchors_for_bbox.shape[0]):
+	for idx in range(num_anchors_for_bbox.shape[0]):
 		if num_anchors_for_bbox[idx] == 0:
 			# no box with an IOU greater than zero ...
 			if best_anchor_for_bbox[idx, 0] == -1:
@@ -274,9 +274,9 @@ class threadsafe_iter:
 	def __iter__(self):
 		return self
 
-	def next(self):
+	def __next__(self):
 		with self.lock:
-			return self.it.next()		
+			return self.it.__next__()
 
 	
 def threadsafe_generator(f):
@@ -288,10 +288,10 @@ def threadsafe_generator(f):
 
 def get_anchor_gt(all_img_data, class_count, C, backend, mode='train'):
 
-	all_img_data = sorted(all_img_data)
+	all_img_data = sorted(all_img_data, key= lambda x:x['filepath'])
 
 	sample_selector = SampleSelector(class_count)
-
+	print('here1')
 	while True:
 		if mode == 'train':
 			random.shuffle(all_img_data)
@@ -303,7 +303,7 @@ def get_anchor_gt(all_img_data, class_count, C, backend, mode='train'):
 					continue
 
 				# read in image, and optionally add augmentation
-
+				print('here2')
 				if mode == 'train':
 					img_data_aug, x_img = data_augment.augment(img_data, C, augment=True)
 				else:
@@ -314,7 +314,7 @@ def get_anchor_gt(all_img_data, class_count, C, backend, mode='train'):
 
 				assert cols == width
 				assert rows == height
-
+				print('here3')
 				# get image dimensions for resizing
 				(resized_width, resized_height) = get_new_img_size(width, height, C.im_size)
 
@@ -327,24 +327,25 @@ def get_anchor_gt(all_img_data, class_count, C, backend, mode='train'):
 					continue
 
 				# Zero-center by mean pixel, and preprocess image
-
+				print('here4')
 				x_img = x_img[:,:, (2, 1, 0)]  # BGR -> RGB
 				x_img = x_img.astype(np.float32)
+				print('here4.3')
 				x_img[:, :, 0] -= C.img_channel_mean[0]
 				x_img[:, :, 1] -= C.img_channel_mean[1]
 				x_img[:, :, 2] -= C.img_channel_mean[2]
 				x_img /= C.img_scaling_factor
-
+				print('here4.7')
 				x_img = np.transpose(x_img, (2, 0, 1))
 				x_img = np.expand_dims(x_img, axis=0)
-
+				print('here5')
 				y_rpn_regr[:, y_rpn_regr.shape[1]/2:, :, :] *= C.std_scaling
 
 				if backend == 'tf':
 					x_img = np.transpose(x_img, (0, 2, 3, 1))
 					y_rpn_cls = np.transpose(y_rpn_cls, (0, 2, 3, 1))
 					y_rpn_regr = np.transpose(y_rpn_regr, (0, 2, 3, 1))
-
+				print('here6')
 				yield np.copy(x_img), [np.copy(y_rpn_cls), np.copy(y_rpn_regr)], img_data_aug
 
 			except Exception as e:
