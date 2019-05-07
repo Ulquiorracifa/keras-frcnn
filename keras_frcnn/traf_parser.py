@@ -10,30 +10,29 @@ def get_data(filepath):
 
     class_mapping = {}
     found_bg= False
-
+    datapath = '/home/asprohy/data/traffic/train_trfc'
     label_path = "/home/asprohy/data/traffic/train_label_fix.csv"
     class_mapping = {
-        'other': 0,
-        'parkingLot': 1,
-        'intersection': 2,
-        'keepRight': 3,
-        'leftOrRight': 4,
-        'busPassage': 5,
-        'leftDriving': 6,
-        'slow': 7,
-        'motorVehicleStraightOrRight': 8,
-        'attentionToPedestrians': 9,
-        'aroundTheIsland': 10,
-        'straightOrRight': 11,
-        'noBus': 12,
-        'noMotorcycle': 13,
-        'noMotorVehicle': 14,
-        'noNonmotorvehicle': 15,
-        'noHonking': 16,
-        'interchangeStraightOrTurning': 17,
-        'speedLimited40': 18,
-        'speedLimited30': 19,
-        'Honking': 20,
+        'parkingLot': 0,
+        'intersection': 1,
+        'keepRight': 2,
+        'leftOrRight': 3,
+        'busPassage': 4,
+        'leftDriving': 5,
+        'slow': 6,
+        'motorVehicleStraightOrRight': 7,
+        'attentionToPedestrians': 8,
+        'aroundTheIsland': 9,
+        'straightOrRight': 10,
+        'noBus': 11,
+        'noMotorcycle': 12,
+        'noMotorVehicle': 13,
+        'noNonmotorvehicle': 14,
+        'noHonking': 15,
+        'interchangeStraightOrTurning': 16,
+        'speedLimited40': 17,
+        'speedLimited30': 18,
+        'Honking': 19,
     }
 
     Revclass_mapping = {
@@ -63,10 +62,11 @@ def get_data(filepath):
     print('startReadFile.')
     datas = pd.read_csv(label_path).values
     count = 0
-    for c in datas[:1000]:
+    for c in datas:
         filename, x1, y1, _, _, x2, y2, _, _, class_name = c
 
         class_name = Revclass_mapping[int(class_name)]
+        filename = os.path.join(datapath,filename)
 
         if class_name not in classes_count:
             classes_count[class_name] = 1
@@ -107,6 +107,11 @@ def get_data(filepath):
             class_mapping['bg'] = len(class_mapping) - 1
             class_mapping[key_to_switch] = val_to_switch
 
+    if 'bg' not in classes_count:
+        classes_count['bg'] = 0
+        class_mapping['bg'] = len(class_mapping)
+
     print('endReadFile.')
+
 
     return all_data, classes_count, class_mapping

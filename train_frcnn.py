@@ -20,7 +20,7 @@ sys.setrecursionlimit(40000)
 
 parser = OptionParser()
 
-parser.add_option("-p", "--path", dest="train_path", help="Path to training data.", default="/home/asprohy/data/traffic/train_trfc")
+parser.add_option("-p", "--path", dest="train_path", help="Path to training data.", default="/home/asprohy/data/traffic/train_trfc") #default="/home/asprohy/pyWorkSpace/neuralNetworks/data/pascal_voc/VOCdevkit")
 parser.add_option("-o", "--parser", dest="parser", help="Parser to use. One of simple or pascal_voc or traf",
 				default="traf"),
 parser.add_option("-n", "--num_rois", dest="num_rois",
@@ -65,6 +65,12 @@ if options.input_weight_path:
 
 all_imgs, classes_count, class_mapping = get_data(options.train_path)
 
+print(len(classes_count))
+print(classes_count)
+print(len(class_mapping))
+print(class_mapping)
+
+
 if 'bg' not in classes_count:
 	classes_count['bg'] = 0
 	class_mapping['bg'] = len(class_mapping)
@@ -93,18 +99,14 @@ val_imgs = [s for s in all_imgs if s['imageset'] == 'test']
 print('Num train samples {}'.format(len(train_imgs)))
 print('Num val samples {}'.format(len(val_imgs)))
 
+
 print('len_ all_img_data:', train_imgs[0])
 print('len_ all_img_data:', train_imgs[1])
-#
-# all_img_data = sorted(train_imgs)
-# print('len_ all_img_data:', len(all_img_data))
-# print('len_ all_img_data:', all_img_data[0])
 
 data_gen_train = data_generators.get_anchor_gt(train_imgs, classes_count, C, K.image_dim_ordering(), mode='train')
 data_gen_val = data_generators.get_anchor_gt(val_imgs, classes_count, C, K.image_dim_ordering(), mode='val')
 
-# print('type_train: ', type(data_gen_train))
-# print('type_val: ', type(data_gen_val))
+
 
 if K.image_dim_ordering() == 'th':
 	input_shape_img = (3, None, None)
@@ -167,20 +169,16 @@ for epoch_num in range(num_epochs):
 
 	while True:
 		try:
-			print('in ep1 try')
 			if len(rpn_accuracy_rpn_monitor) == epoch_length and C.verbose:
 				mean_overlapping_bboxes = float(sum(rpn_accuracy_rpn_monitor))/len(rpn_accuracy_rpn_monitor)
 				rpn_accuracy_rpn_monitor = []
 				print('Average number of overlapping bounding boxes from RPN = {} for {} previous iterations'.format(mean_overlapping_bboxes, epoch_length))
 				if mean_overlapping_bboxes == 0:
 					print('RPN is not producing bounding boxes that overlap the ground truth boxes. Check RPN settings or keep training.')
-			print('in ep1.55555555555 try')
 			X, Y, img_data = data_gen_train.__next__()
-			print('in ep1.66666666666 try')
 			loss_rpn = model_rpn.train_on_batch(X, Y)
 
 			P_rpn = model_rpn.predict_on_batch(X)
-			print('in ep2 RPNfinished try')
 			R = roi_helpers.rpn_to_roi(P_rpn[0], P_rpn[1], C, K.image_dim_ordering(), use_regr=True, overlap_thresh=0.7, max_boxes=300)
 
 			# note: calc_iou converts from (x1,y1,x2,y2) to (x,y,w,h) format
@@ -203,7 +201,6 @@ for epoch_num in range(num_epochs):
 				pos_samples = pos_samples[0]
 			else:
 				pos_samples = []
-			print('in ep3 samplesfinish try')
 			rpn_accuracy_rpn_monitor.append(len(pos_samples))
 			rpn_accuracy_for_epoch.append((len(pos_samples)))
 
@@ -226,7 +223,6 @@ for epoch_num in range(num_epochs):
 					sel_samples = random.choice(neg_samples)
 				else:
 					sel_samples = random.choice(pos_samples)
-			print('in ep4 lossCount try')
 			loss_class = model_classifier.train_on_batch([X, X2[:, sel_samples, :]], [Y1[:, sel_samples, :], Y2[:, sel_samples, :]])
 
 			losses[iter_num, 0] = loss_rpn[1]
@@ -240,7 +236,6 @@ for epoch_num in range(num_epochs):
 
 			progbar.update(iter_num, [('rpn_cls', np.mean(losses[:iter_num, 0])), ('rpn_regr', np.mean(losses[:iter_num, 1])),
 									  ('detector_cls', np.mean(losses[:iter_num, 2])), ('detector_regr', np.mean(losses[:iter_num, 0]))])
-			print('in ep4 lossUpdate try')
 			if iter_num == epoch_length:
 				loss_rpn_cls = np.mean(losses[:, 0])
 				loss_rpn_regr = np.mean(losses[:, 1])
@@ -271,7 +266,6 @@ for epoch_num in range(num_epochs):
 					model_all.save_weights(C.model_path)
 
 				break
-			print('in ep5 endep try')
 		except Exception as e:
 			print('Exception: {}'.format(e))
 			continue

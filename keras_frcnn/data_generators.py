@@ -291,7 +291,7 @@ def get_anchor_gt(all_img_data, class_count, C, backend, mode='train'):
 	all_img_data = sorted(all_img_data, key= lambda x:x['filepath'])
 
 	sample_selector = SampleSelector(class_count)
-	print('here1')
+
 	while True:
 		if mode == 'train':
 			random.shuffle(all_img_data)
@@ -303,7 +303,6 @@ def get_anchor_gt(all_img_data, class_count, C, backend, mode='train'):
 					continue
 
 				# read in image, and optionally add augmentation
-				print('here2')
 				if mode == 'train':
 					img_data_aug, x_img = data_augment.augment(img_data, C, augment=True)
 				else:
@@ -314,7 +313,7 @@ def get_anchor_gt(all_img_data, class_count, C, backend, mode='train'):
 
 				assert cols == width
 				assert rows == height
-				print('here3')
+
 				# get image dimensions for resizing
 				(resized_width, resized_height) = get_new_img_size(width, height, C.im_size)
 
@@ -327,25 +326,25 @@ def get_anchor_gt(all_img_data, class_count, C, backend, mode='train'):
 					continue
 
 				# Zero-center by mean pixel, and preprocess image
-				print('here4')
+
 				x_img = x_img[:,:, (2, 1, 0)]  # BGR -> RGB
 				x_img = x_img.astype(np.float32)
-				print('here4.3')
+
 				x_img[:, :, 0] -= C.img_channel_mean[0]
 				x_img[:, :, 1] -= C.img_channel_mean[1]
 				x_img[:, :, 2] -= C.img_channel_mean[2]
 				x_img /= C.img_scaling_factor
-				print('here4.7')
+
 				x_img = np.transpose(x_img, (2, 0, 1))
 				x_img = np.expand_dims(x_img, axis=0)
-				print('here5')
-				y_rpn_regr[:, y_rpn_regr.shape[1]/2:, :, :] *= C.std_scaling
+
+				y_rpn_regr[:, int(y_rpn_regr.shape[1]/2):, :, :] *= C.std_scaling
 
 				if backend == 'tf':
 					x_img = np.transpose(x_img, (0, 2, 3, 1))
 					y_rpn_cls = np.transpose(y_rpn_cls, (0, 2, 3, 1))
 					y_rpn_regr = np.transpose(y_rpn_regr, (0, 2, 3, 1))
-				print('here6')
+
 				yield np.copy(x_img), [np.copy(y_rpn_cls), np.copy(y_rpn_regr)], img_data_aug
 
 			except Exception as e:
