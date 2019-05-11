@@ -5,6 +5,7 @@ import time
 import numpy as np
 from optparse import OptionParser
 import pickle
+import logging
 
 from keras import backend as K
 from keras.optimizers import Adam
@@ -18,18 +19,20 @@ from keras.utils import generic_utils
 
 sys.setrecursionlimit(40000)
 
+logging.basicConfig(filename='fastrcnnTraf.log',level=logging.DEBUG)
+
 parser = OptionParser()
 
-parser.add_option("-p", "--path", dest="train_path", help="Path to training data.", default="/home/asprohy/data/traffic/train_trfc") #default="/home/asprohy/pyWorkSpace/neuralNetworks/data/pascal_voc/VOCdevkit")
+parser.add_option("-p", "--path", dest="train_path", help="Path to training data.", default="/home/asprohy/pyWorkSpace/neuralNetworks/data/pascal_voc/VOCdevkit")#"/home/asprohy/data/traffic/train_trfc") #default="/home/asprohy/pyWorkSpace/neuralNetworks/data/pascal_voc/VOCdevkit")
 parser.add_option("-o", "--parser", dest="parser", help="Parser to use. One of simple or pascal_voc or traf",
-				default="traf"),
+				default="pascal_voc"),
 parser.add_option("-n", "--num_rois", dest="num_rois",
 				help="Number of ROIs per iteration. Higher means more memory use.", default=32)
 parser.add_option("--hf", dest="horizontal_flips", help="Augment with horizontal flips in training. (Default=true).", action="store_true", default=False)
 parser.add_option("--vf", dest="vertical_flips", help="Augment with vertical flips in training. (Default=false).", action="store_true", default=False)
 parser.add_option("--rot", "--rot_90", dest="rot_90", help="Augment with 90 degree rotations in training. (Default=false).",
 				  action="store_true", default=False)
-parser.add_option("--num_epochs", dest="num_epochs", help="Number of epochs.", default=2000)
+parser.add_option("--num_epochs", dest="num_epochs", help="Number of epochs.", default=20)
 parser.add_option("--config_filename", dest="config_filename", help=
 				"Location to store all the metadata related to the training (to be used when testing).",
 				default="config.pickle")
@@ -98,7 +101,8 @@ val_imgs = [s for s in all_imgs if s['imageset'] == 'test']
 
 print('Num train samples {}'.format(len(train_imgs)))
 print('Num val samples {}'.format(len(val_imgs)))
-
+logging.info('Num train samples {}'.format(len(train_imgs)))
+logging.info('Num val samples {}'.format(len(val_imgs)))
 
 print('len_ all_img_data:', train_imgs[0])
 print('len_ all_img_data:', train_imgs[1])
@@ -160,12 +164,14 @@ best_loss = np.Inf
 
 class_mapping_inv = {v: k for k, v in class_mapping.items()}
 print('Starting training')
+logging.info('Starting training')
 
 
 for epoch_num in range(num_epochs):
 
 	progbar = generic_utils.Progbar(epoch_length)
 	print('Epoch {}/{}'.format(epoch_num + 1, num_epochs))
+	logging.info('Epoch {}/{}'.format(epoch_num + 1, num_epochs))
 
 	while True:
 		try:
@@ -173,8 +179,10 @@ for epoch_num in range(num_epochs):
 				mean_overlapping_bboxes = float(sum(rpn_accuracy_rpn_monitor))/len(rpn_accuracy_rpn_monitor)
 				rpn_accuracy_rpn_monitor = []
 				print('Average number of overlapping bounding boxes from RPN = {} for {} previous iterations'.format(mean_overlapping_bboxes, epoch_length))
+				logging.info('Average number of overlapping bounding boxes from RPN = {} for {} previous iterations'.format(mean_overlapping_bboxes, epoch_length))
 				if mean_overlapping_bboxes == 0:
 					print('RPN is not producing bounding boxes that overlap the ground truth boxes. Check RPN settings or keep training.')
+					logging.info('RPN is not producing bounding boxes that overlap the ground truth boxes. Check RPN settings or keep training.')
 			X, Y, img_data = data_gen_train.__next__()
 			loss_rpn = model_rpn.train_on_batch(X, Y)
 
@@ -208,7 +216,7 @@ for epoch_num in range(num_epochs):
 				if len(pos_samples) < C.num_rois/2:
 					selected_pos_samples = pos_samples.tolist()
 				else:
-					selected_pos_samples = np.random.choice(pos_samples, C.num_rois/2, replace=False).tolist()
+					selected_pos_samples = np.random.choice(pos_samples, int(C.num_rois/2), replace=False).tolist()
 				try:
 					selected_neg_samples = np.random.choice(neg_samples, C.num_rois - len(selected_pos_samples), replace=False).tolist()
 				except:
@@ -248,12 +256,19 @@ for epoch_num in range(num_epochs):
 
 				if C.verbose:
 					print('Mean number of bounding boxes from RPN overlapping ground truth boxes: {}'.format(mean_overlapping_bboxes))
+					logging.info('Mean number of bounding boxes from RPN overlapping ground truth boxes: {}'.format(mean_overlapping_bboxes))
 					print('Classifier accuracy for bounding boxes from RPN: {}'.format(class_acc))
+					logging.info('Classifier accuracy for bounding boxes from RPN: {}'.format(class_acc))
 					print('Loss RPN classifier: {}'.format(loss_rpn_cls))
+					logging.info('Loss RPN classifier: {}'.format(loss_rpn_cls))
 					print('Loss RPN regression: {}'.format(loss_rpn_regr))
+					logging.info('Loss RPN regression: {}'.format(loss_rpn_regr))
 					print('Loss Detector classifier: {}'.format(loss_class_cls))
+					logging.info('Loss Detector classifier: {}'.format(loss_class_cls))
 					print('Loss Detector regression: {}'.format(loss_class_regr))
+					logging.info('Loss Detector regression: {}'.format(loss_class_regr))
 					print('Elapsed time: {}'.format(time.time() - start_time))
+					logging.info('Elapsed time: {}'.format(time.time() - start_time))
 
 				curr_loss = loss_rpn_cls + loss_rpn_regr + loss_class_cls + loss_class_regr
 				iter_num = 0
@@ -262,6 +277,7 @@ for epoch_num in range(num_epochs):
 				if curr_loss < best_loss:
 					if C.verbose:
 						print('Total loss decreased from {} to {}, saving weights'.format(best_loss,curr_loss))
+						logging.info('Total loss decreased from {} to {}, saving weights'.format(best_loss,curr_loss))
 					best_loss = curr_loss
 					model_all.save_weights(C.model_path)
 
@@ -271,3 +287,4 @@ for epoch_num in range(num_epochs):
 			continue
 
 print('Training complete, exiting.')
+logging.info('Training complete, exiting.')
