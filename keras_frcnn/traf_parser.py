@@ -2,6 +2,9 @@ import os
 import numpy as np
 import pandas as pd
 import cv2
+import xml.etree.ElementTree as ET
+from lxml import etree
+import xml.dom.minidom as minidom
 
 def get_data(filepath):
     all_imgs = {}
@@ -134,30 +137,30 @@ def get_data2(input_path):
 
     for data_path in data_paths:
 
-        annot_path = os.path.join(data_path, 'Annotations')
-        imgs_path = os.path.join(data_path, 'JPEGImages')
-        imgsets_path_trainval = os.path.join(data_path, 'ImageSets','Main','trainval.txt')
-        imgsets_path_test = os.path.join(data_path, 'ImageSets','Main','test.txt')
+        annot_path = os.path.join(input_path, 'Annotations')
+        imgs_path = os.path.join(input_path, 'train_trfc')
+        imgsets_path_trainval = os.path.join(input_path, 'ImageSets','Main','trainval.txt')
+        imgsets_path_test = os.path.join(input_path, 'ImageSets','Main','test.txt')
 
         trainval_files = datas[:,0]
         test_files = []
-        try:
-            with open(imgsets_path_trainval) as f:
-                for line in f:
-                    trainval_files.append(line.strip() + '.jpg')
-        except Exception as e:
-            print(e)
-
-        try:
-            with open(imgsets_path_test) as f:
-                for line in f:
-                    test_files.append(line.strip() + '.jpg')
-        except Exception as e:
-            if data_path[-7:] == 'VOC2012':
-                # this is expected, most pascal voc distibutions dont have the test.txt file
-                pass
-            else:
-                print(e)
+        # try:
+        #     with open(imgsets_path_trainval) as f:
+        #         for line in f:
+        #             trainval_files.append(line.strip() + '.jpg')
+        # except Exception as e:
+        #     print(e)
+        #
+        # try:
+        #     with open(imgsets_path_test) as f:
+        #         for line in f:
+        #             test_files.append(line.strip() + '.jpg')
+        # except Exception as e:
+        #     if data_path[-7:] == 'VOC2012':
+        #         # this is expected, most pascal voc distibutions dont have the test.txt file
+        #         pass
+        #     else:
+        #         print(e)
 
         annots = [os.path.join(annot_path, s) for s in os.listdir(annot_path)]
         idx = 0
@@ -216,3 +219,76 @@ def get_data2(input_path):
                 print(e)
                 continue
     return all_imgs, classes_count, class_mapping
+
+class GEN_Annotations:
+    def __init__(self, filename):
+        self.root = etree.Element("annotation")
+        child1 = etree.SubElement(self.root, "folder")
+        child1.text = "traf"
+
+        child2 = etree.SubElement(self.root, "filename")
+        child2.text = filename
+        child3 = etree.SubElement(self.root, "source") # child2.set("database", "The VOC2007 Database")
+        child4 = etree.SubElement(child3, "annotation")
+        child4.text = "PASCAL VOC2007"
+        child5 = etree.SubElement(child3, "database")
+        child6 = etree.SubElement(child3, "image")
+        child6.text = "flickr"
+        child7 = etree.SubElement(child3, "flickrid")
+        child7.text = "35435"
+
+# root.append( etree.Element("child1") )
+# root.append( etree.Element("child1", interesting="totally"))
+# child2 = etree.SubElement(root, "child2")
+
+# child3 = etree.SubElement(root, "child3")
+# root.insert(0, etree.Element("child0"))
+
+    def set_size(self,witdh,height,channel):
+        size = etree.SubElement(self.root, "size")
+        widthn = etree.SubElement(size, "width")
+        widthn.text = str(witdh)
+        heightn = etree.SubElement(size, "height")
+        heightn.text = str(height)
+        channeln = etree.SubElement(size, "channel")
+        channeln.text = str(channel)
+    def savefile(self,filename):
+        tree = etree.ElementTree(self.root)
+        tree.write(filename, pretty_print=True, xml_declaration=False, encoding='utf-8')
+    def add_pic_attr(self,label,x1,y1,x2,y2):
+        object = etree.SubElement(self.root, "object")
+        namen = etree.SubElement(object, "name")
+        dif = etree.SubElement(object, "difficult")
+        namen.text = str(label)
+        dif.text =str(0)
+        bndbox = etree.SubElement(object, "bndbox")
+        xminn = etree.SubElement(bndbox, "xmin")
+        xminn.text = str(x1)
+        yminn = etree.SubElement(bndbox, "ymin")
+        yminn.text = str(y1)
+        xmaxn = etree.SubElement(bndbox, "xmax")
+        xmaxn.text = str(x2)
+        ymaxn = etree.SubElement(bndbox, "ymax")
+        ymaxn.text = str(y2)
+
+
+def wrtXml(labelP, fileP):
+    keys = pd.read_csv(labelP).keys()
+    datas = pd.read_csv(labelP).values
+    datapath = '/home/asprohy/data/traffic/train_trfc'
+
+    for c in datas:
+        filename, x1, y1, _, _, x2, y2, _, _, class_name = c
+        anno= GEN_Annotations(filename)
+        filepath = os.path.join(datapath,filename)
+        img = cv2.imread(filepath)
+        (rows, cols) = img.shape[:2]
+        anno.set_size(rows, cols,3)
+        anno.add_pic_attr(class_name,x1,y1,x2,y2)
+        anno.savefile(os.path.join(fileP,filename[:-4]+'.xml'))     # 输出xml到out_files
+
+
+if __name__ == '__main__':
+    labelPath = "/home/asprohy/data/traffic/train_label_fix.csv"
+    fileP = "/home/asprohy/data/traffic/Annotations"
+    wrtXml(labelPath, fileP)

@@ -23,9 +23,9 @@ logging.basicConfig(filename='fastrcnnTraf.log',level=logging.DEBUG)
 
 parser = OptionParser()
 
-parser.add_option("-p", "--path", dest="train_path", help="Path to training data.", default="/home/asprohy/pyWorkSpace/neuralNetworks/data/pascal_voc/VOCdevkit")#"/home/asprohy/data/traffic/train_trfc") #default="/home/asprohy/pyWorkSpace/neuralNetworks/data/pascal_voc/VOCdevkit")
+parser.add_option("-p", "--path", dest="train_path", help="Path to training data.", default="/home/asprohy/data/traffic") #default="/home/asprohy/pyWorkSpace/neuralNetworks/data/pascal_voc/VOCdevkit")
 parser.add_option("-o", "--parser", dest="parser", help="Parser to use. One of simple or pascal_voc or traf",
-				default="pascal_voc"),
+				default="traf"),
 parser.add_option("-n", "--num_rois", dest="num_rois",
 				help="Number of ROIs per iteration. Higher means more memory use.", default=32)
 parser.add_option("--hf", dest="horizontal_flips", help="Augment with horizontal flips in training. (Default=true).", action="store_true", default=False)
@@ -49,7 +49,7 @@ if options.parser == 'pascal_voc':
 elif options.parser == 'simple':
 	from keras_frcnn.simple_parser import get_data
 elif options.parser == 'traf':
-	from keras_frcnn.traf_parser import get_data
+	from keras_frcnn.traf_parser import get_data2
 else:
 	raise ValueError("Command line option parser must be one of 'pascal_voc' or 'simple' or 'traf' ")
 
@@ -66,7 +66,7 @@ C.model_path = options.output_weight_path
 if options.input_weight_path:
 	C.base_net_weights = options.input_weight_path
 
-all_imgs, classes_count, class_mapping = get_data(options.train_path)
+all_imgs, classes_count, class_mapping = get_data2(options.train_path)
 
 print(len(classes_count))
 print(classes_count)
