@@ -142,8 +142,12 @@ def get_data2(input_path):
         imgsets_path_trainval = os.path.join(input_path, 'ImageSets','Main','trainval.txt')
         imgsets_path_test = os.path.join(input_path, 'ImageSets','Main','test.txt')
 
-        trainval_files = datas[:,0]
-        test_files = []
+        print('datas.size: ', datas.shape[0])
+
+        spiltCout =int(datas.shape[0]*0.9)
+
+        trainval_files = datas[:spiltCout,0]
+        test_files = datas[spiltCout:,0]
         # try:
         #     with open(imgsets_path_trainval) as f:
         #         for line in f:

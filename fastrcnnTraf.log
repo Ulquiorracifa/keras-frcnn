@@ -1,0 +1,488 @@
+INFO:root:Num train samples 16840
+INFO:root:Num val samples 3418
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:root:Starting training
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.042 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.172 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.189 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.227 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.197 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.218 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.199 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.184 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.195 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.202 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.1843210452636491
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.9888125
+INFO:root:Loss RPN classifier: 0.706226016122788
+INFO:root:Loss RPN regression: 0.12062684219924268
+INFO:root:Loss Detector classifier: 0.11052966431559814
+INFO:root:Loss Detector regression: 0.19708799509680466
+INFO:root:Elapsed time: 6755.684304714203
+INFO:root:Total loss decreased from inf to 1.1344705177344336, saving weights
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.221 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.232 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.216 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.233 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.226 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.227 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.211 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.246 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.253 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.23162124009121512
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.9785
+INFO:root:Loss RPN classifier: 0.6234830163795023
+INFO:root:Loss RPN regression: 0.03280970192555651
+INFO:root:Loss Detector classifier: 0.15440277870447358
+INFO:root:Loss Detector regression: 0.26835384613904173
+INFO:root:Elapsed time: 5632.445435762405
+INFO:root:Total loss decreased from 1.1344705177344336 to 1.0790493431485741, saving weights
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.235 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.24 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.218 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.238 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.26 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.27 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.252 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.289 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.247 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.26 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.272 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.2569200038048131
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.9756875
+INFO:root:Loss RPN classifier: 0.6422610362431833
+INFO:root:Loss RPN regression: 0.021163315320707626
+INFO:root:Loss Detector classifier: 0.16784733945038022
+INFO:root:Loss Detector regression: 0.2846735413568676
+INFO:root:Elapsed time: 6173.363504648209
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.28 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.249 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.294 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.275 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.256 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.257 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.228 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.254 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.269 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.262 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.301 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.26472516153197867
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.97453125
+INFO:root:Loss RPN classifier: 0.6422605166716912
+INFO:root:Loss RPN regression: 0.0166662341322517
+INFO:root:Loss Detector classifier: 0.16512586483056696
+INFO:root:Loss Detector regression: 0.25374358811959974
+INFO:root:Elapsed time: 6185.309556484222
+INFO:root:Total loss decreased from 1.0790493431485741 to 1.0777962037541096, saving weights
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.275 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.284 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.271 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.28 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.297 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.307 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.293 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.287 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.274 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.285 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.251 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.2824778761061947
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.973375
+INFO:root:Loss RPN classifier: 0.6535297105312325
+INFO:root:Loss RPN regression: 0.014909694450085225
+INFO:root:Loss Detector classifier: 0.16546799753186714
+INFO:root:Loss Detector regression: 0.20273283625900512
+INFO:root:Elapsed time: 6502.19691491127
+INFO:root:Total loss decreased from 1.0777962037541096 to 1.03664023877219, saving weights
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.326 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.29 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.247 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.3 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.297 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.282 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.261 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.299 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.31 for 1000 previous iterations
+
+
+
+INFO:root:Num train samples 4149
+INFO:root:Num val samples 851
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:root:Starting training
+INFO:root:Epoch 1/2000
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:root:Num train samples 4182
+INFO:root:Num val samples 818
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:root:Starting training
+INFO:root:Epoch 1/2000
+INFO:root:Num train samples 4189
+INFO:root:Num val samples 811
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:root:Starting training
+INFO:root:Epoch 1/2000
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.127 for 1000 previous iterations
+INFO:root:Num train samples 828
+INFO:root:Num val samples 172
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:root:Starting training
+INFO:root:Epoch 1/2000
+INFO:root:Num train samples 808
+INFO:root:Num val samples 192
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:root:Starting training
+INFO:root:Epoch 1/2000
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:root:Num train samples 828
+INFO:root:Num val samples 172
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:root:Starting training
+INFO:root:Epoch 1/2000
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:root:Num train samples 816
+INFO:root:Num val samples 184
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:root:Starting training
+INFO:root:Epoch 1/2000
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.177 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.257 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.27 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.306 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.345 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.458 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.3090260897747529
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.98784375
+INFO:root:Loss RPN classifier: 0.5898349907460159
+INFO:root:Loss RPN regression: 0.1193916381325107
+INFO:root:Loss Detector classifier: 0.11362731122343492
+INFO:root:Loss Detector regression: 0.1753592650930259
+INFO:root:Elapsed time: 3944.10142326355
+INFO:root:Total loss decreased from inf to 0.9982132051949875, saving weights
+INFO:root:Epoch 2/2000
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.524 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.37 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.449 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.452 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.523 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.461797975788847
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.9866875
+INFO:root:Loss RPN classifier: 0.6758380954470444
+INFO:root:Loss RPN regression: 0.043185250876442295
+INFO:root:Loss Detector classifier: 0.09771114607637164
+INFO:root:Loss Detector regression: 0.12420522142752088
+INFO:root:Elapsed time: 3357.724938392639
+INFO:root:Total loss decreased from 0.9982132051949875 to 0.9409397138273793, saving weights
+INFO:root:Epoch 3/2000
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.481 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.516 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.5 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.433 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.4720670391061452
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.98675
+INFO:root:Loss RPN classifier: 0.6197743530049964
+INFO:root:Loss RPN regression: 0.02590330916311359
+INFO:root:Loss Detector classifier: 0.07843051506098556
+INFO:root:Loss Detector regression: 0.12777792424614925
+INFO:root:Elapsed time: 3033.049722671509
+INFO:root:Total loss decreased from 0.9409397138273793 to 0.8518861014752448, saving weights
+INFO:root:Epoch 4/2000
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.429 for 1000 previous iterations
+INFO:root:Num train samples 17125
+INFO:root:Num val samples 0
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:root:Starting training
+INFO:root:Epoch 1/20
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:root:Num train samples 17125
+INFO:root:Num val samples 0
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:root:Starting training
+INFO:root:Epoch 1/20
+INFO:root:Num train samples 17125
+INFO:root:Num val samples 0
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:root:Starting training
+INFO:root:Epoch 1/20
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:root:Num train samples 0
+INFO:root:Num val samples 0
+INFO:root:Num train samples 0
+INFO:root:Num val samples 0
+INFO:root:Num train samples 20258
+INFO:root:Num val samples 0
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:root:Starting training
+INFO:root:Epoch 1/20
+WARNING:tensorflow:From /home/asprohy/anaconda3/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.194 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.146 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.176 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.179 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.212 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.181 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.18 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.211 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.204 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.226 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.188 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.229 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.222 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.26 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.283 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.3 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.33 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.351 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.339 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.316 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.2374987622536885
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.985875
+INFO:root:Loss RPN classifier: 0.5793999337799085
+INFO:root:Loss RPN regression: 0.028602302080369554
+INFO:root:Loss Detector classifier: 0.12094338316035036
+INFO:root:Loss Detector regression: 0.2407953373214077
+INFO:root:Elapsed time: 12445.302838087082
+INFO:root:Total loss decreased from inf to 0.969740956342036, saving weights
+INFO:root:Epoch 2/20
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.341 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.312 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.332 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.346 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.352 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.321 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.332 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.324 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.346 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.378 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.349 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.3388878987702727
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.96875
+INFO:root:Loss RPN classifier: 0.6197572293375413
+INFO:root:Loss RPN regression: 0.011444533995168968
+INFO:root:Loss Detector classifier: 0.20607447204110055
+INFO:root:Loss Detector regression: 0.34026018249806655
+INFO:root:Elapsed time: 6646.156253576279
+INFO:root:Epoch 3/20
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.39 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.354 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.372 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.338 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.336 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.391 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.383 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.381 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.325 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.329 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.325 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.35910878112712974
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.9641875
+INFO:root:Loss RPN classifier: 0.5934336952890039
+INFO:root:Loss RPN regression: 0.0081077779248335
+INFO:root:Loss Detector classifier: 0.2189515863641136
+INFO:root:Loss Detector regression: 0.28832723226057716
+INFO:root:Elapsed time: 6699.142557621002
+INFO:root:Epoch 4/20
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.367 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.397 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.322 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.366 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.371 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.347 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.378 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.39 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.348 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.317 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.35825262308313155
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.96125
+INFO:root:Loss RPN classifier: 0.6159691761242175
+INFO:root:Loss RPN regression: 0.006561752874284139
+INFO:root:Loss Detector classifier: 0.22231448489238848
+INFO:root:Loss Detector regression: 0.26159521270671393
+INFO:root:Elapsed time: 5787.743850708008
+INFO:root:Epoch 5/20
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.371 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.343 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.323 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.384 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.336 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.424 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.372 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.342 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.375 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.347 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.345 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.34 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.35858630041116263
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.96103125
+INFO:root:Loss RPN classifier: 0.6798194170416798
+INFO:root:Loss RPN regression: 0.0061080832970837945
+INFO:root:Loss Detector classifier: 0.21004518336161665
+INFO:root:Loss Detector regression: 0.21764122525346466
+INFO:root:Elapsed time: 6654.8941469192505
+INFO:root:Epoch 6/20
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.318 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.332 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.347 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.406 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.376 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.329 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.372 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.378 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.403 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.349 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.356 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.35934437911990025
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.95865625
+INFO:root:Loss RPN classifier: 0.6047010061559286
+INFO:root:Loss RPN regression: 0.005089822886184266
+INFO:root:Loss Detector classifier: 0.21802091438768548
+INFO:root:Loss Detector regression: 0.20882564211965654
+INFO:root:Elapsed time: 6538.70282626152
+INFO:root:Epoch 7/20
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.341 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.33 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.383 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.346 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.363 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.334 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.369 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.403 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.364 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.421 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.358 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.3672316384180791
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.95925
+INFO:root:Loss RPN classifier: 0.6122129049104195
+INFO:root:Loss RPN regression: 0.004684855843028345
+INFO:root:Loss Detector classifier: 0.2022768636613855
+INFO:root:Loss Detector regression: 0.15714179319216054
+INFO:root:Elapsed time: 6385.444808006287
+INFO:root:Epoch 8/20
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.357 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.41 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.407 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.383 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.388 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.373 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.365 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.381 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.396 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.372 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.365 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.3814147018030513
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.95909375
+INFO:root:Loss RPN classifier: 0.578409663133145
+INFO:root:Loss RPN regression: 0.00673443520731962
+INFO:root:Loss Detector classifier: 0.2017471212867738
+INFO:root:Loss Detector regression: 0.16970189779414796
+INFO:root:Elapsed time: 6324.540731191635
+INFO:root:Total loss decreased from 0.969740956342036 to 0.9565931174213864, saving weights
+INFO:root:Epoch 9/20
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.368 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.368 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.346 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.353 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.384 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.354 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.396 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.386 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.349 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.408 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.37105508870214754
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.960625
+INFO:root:Loss RPN classifier: 0.552118439280991
+INFO:root:Loss RPN regression: 0.004303716387556051
+INFO:root:Loss Detector classifier: 0.1884199223771252
+INFO:root:Loss Detector regression: 0.1424195065125532
+INFO:root:Elapsed time: 6294.535179615021
+INFO:root:Total loss decreased from 0.9565931174213864 to 0.8872615845582255, saving weights
+INFO:root:Epoch 10/20
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.373 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.4 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.367 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.363 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.388 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.321 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.336 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.369 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.365 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.347 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.36 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.36850984067478915
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.962
+INFO:root:Loss RPN classifier: 0.6309923100181516
+INFO:root:Loss RPN regression: 0.003828125059530066
+INFO:root:Loss Detector classifier: 0.17842214267538156
+INFO:root:Loss Detector regression: 0.13324678009026866
+INFO:root:Elapsed time: 6481.957344532013
+INFO:root:Epoch 11/20
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.422 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.376 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.337 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.38 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.398 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.322 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.343 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.325 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.348 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.364 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.359 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.355 for 1000 previous iterations
+INFO:root:Mean number of bounding boxes from RPN overlapping ground truth boxes: 0.3547108007930351
+INFO:root:Classifier accuracy for bounding boxes from RPN: 0.9618125
+INFO:root:Loss RPN classifier: 0.664797012735662
+INFO:root:Loss RPN regression: 0.0034781106960253966
+INFO:root:Loss Detector classifier: 0.1801216023519515
+INFO:root:Loss Detector regression: 0.11404065104086476
+INFO:root:Elapsed time: 7186.223696231842
+INFO:root:Epoch 12/20
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.363 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.387 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.389 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.376 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.348 for 1000 previous iterations
+INFO:root:Average number of overlapping bounding boxes from RPN = 0.439 for 1000 previous iterations
