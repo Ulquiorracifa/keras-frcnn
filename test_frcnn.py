@@ -13,10 +13,10 @@ from keras_frcnn import roi_helpers
 
 
 parser = OptionParser()
-parser.add_option("-i", "--input_file", dest="input_file", help="Path to input image file.", default = "0a0c7c1698944fa19fe72ae77e20cd7d.jpg")
+parser.add_option("-i", "--input_file", dest="input_file", help="Path to input image file.", default = "0a2a7e81204b42d3baddd83e187adf4b.jpg") #""0a0c7c1698944fa19fe72ae77e20cd7d.jpg")
 parser.add_option("-o", "--output_file", dest="output_file", help="Path to output label file.", default="output.mp4")
-parser.add_option("-d", "--input_dir", dest="input_dir", help="Path to input working directory.", default="/home/asprohy/data/traffic/test_data")
-parser.add_option("-u", "--output_dir", dest="output_dir", help="Path to output working directory.", default="/home/asprohy/data/traffic/test_data")
+parser.add_option("-d", "--input_dir", dest="input_dir", help="Path to input working directory.", default="/home/asprohy/data/traffic/train_trfc")
+parser.add_option("-u", "--output_dir", dest="output_dir", help="Path to output working directory.", default="/home/asprohy/pyWorkSpace/keras-frcnn")
 # parser.add_option("-r", "--frame_rate", dest="frame_rate", help="Frame rate of the output video.", default=25.0)
 
 (options, args) = parser.parse_args()
@@ -27,8 +27,9 @@ input_image_file = options.input_file
 output_image_file = options.output_file
 img_path = os.path.join(options.input_dir, '')
 output_path = os.path.join(options.output_dir, '')
+input_file = os.path.join(options.input_dir, options.input_file)
 num_rois = 4
-frame_rate = float(options.frame_rate)
+# frame_rate = float(options.frame_rate)
 
 def cleanup():
     print("cleaning up...")
@@ -65,11 +66,12 @@ def format_img(img, C):
 
 def main():
 
-    cleanup()
+    # cleanup()
+    print("in main")
     sys.setrecursionlimit(40000)
     config_output_filename = 'config.pickle'
 
-    with open(config_output_filename, 'r') as f_in:
+    with open(config_output_filename, 'rb') as f_in:
         C = pickle.load(f_in)
 
     # turn off any data augmentation at test time
@@ -81,8 +83,9 @@ def main():
     if 'bg' not in class_mapping:
         class_mapping['bg'] = len(class_mapping)
 
-    class_mapping = {v: k for k, v in class_mapping.iteritems()}
+    class_mapping = {v: k for k, v in class_mapping.items()}
     print(class_mapping)
+    print(C.model_path)
     class_to_color = {class_mapping[v]: np.random.randint(0, 255, 3) for v in class_mapping}
     C.num_rois = num_rois
 
@@ -124,7 +127,7 @@ def main():
     bbox_threshold = 0.8
 
     visualise = True
-    img_name = img_path[0]
+    img_name = input_image_file
 
     if not img_name.lower().endswith(('.bmp', '.jpeg', '.jpg', '.png', '.tif', '.tiff')):
         print("file type error")
@@ -231,3 +234,6 @@ def main():
                 (255, 255, 255), 1)
     cv2.imwrite(os.path.join(output_path, img_name), img_scaled)
     print(all_dets)
+
+if __name__ == '__main__':
+    main()
